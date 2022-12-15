@@ -15,6 +15,11 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    transition: 1s;
+}
+
+.button_done:hover {
+    background-color: hsl(120, 97%, 41%);
 }
 
 .button_remove {
@@ -23,6 +28,11 @@
     color: white;
     width: 30px;
     height: 30px;
+    transition: 1s;
+}
+
+.button_remove:hover {
+    background-color: hsl(348, 83%, 57%);
 }
 
 .list_item_done {

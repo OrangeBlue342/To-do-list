@@ -45,6 +45,12 @@ html {
     color: white;
     padding: 10px;
     border: none;
+    transition: 1s;
+}
+
+.task_add:hover {
+    background-color: hsl(180, 100%, 35%);
+    transform: scale(125%);
 }
 
 .list_header {
