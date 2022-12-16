@@ -43,13 +43,38 @@
         <button class="Task__done--remove js-Task__done--markAll"
         ${tasks.every((task) => task.done) ? " disabled" : ""}>
         Oznacz wszystkie jako ukończone</button>`;
+      };
 
-        
-    };
+        const Task__done = () => {
+          tasks = tasks.map((task) => ({
+            ...task, done: true
+        }));
+        render();
+        };
+
+        const Task__doneRemove = () => {
+          Task__doneRemove = !Task__doneRemove;
+          render();
+        };
+    
 
     const bindButtonsEvents = () => {
 
+      const Task__doneButton = document.querySelector(".js-Task__done")
+
+      if(Task__doneButton) {
+        Task__doneButton.addEventListener("click", Task__done)
+      }
+
     };
+
+    const Task__doneRemoveButton = document.querySelector(".js-Task__done--markAll")
+
+    if(Task__doneRemoveButton) {
+      Task__doneRemoveButton.addEventListener("click", Task__doneRemove)
+    };
+
+  
 
     const renderTasks = () => {
        let htmlString = "";
