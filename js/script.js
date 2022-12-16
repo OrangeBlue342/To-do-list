@@ -8,15 +8,50 @@
         render();
     }
 
+    const bindEvents =() => {
+      const removeButtons = document.querySelectorAll(".js-remove");
+
+      removeButtons.forEach((removeButton, index) => {
+        removeButton.addEventListener("click", () => {
+         tasks.splice(index, 1);
+         render();
+        });
+      })
+   
+
+   const toggleDoneButtons = document.querySelectorAll(".js-done");
+
+   toggleDoneButtons.forEach((toggleDoneButton, index) => {
+       toggleDoneButton.addEventListener("click", () => {
+           toggleTaskDone(index);
+           render();
+       })
+   })
+    }
+
     const renderButtons = () => {
+      const buttonsElement = document.querySelector(".js-buttons");
+
+        if (!tasks.length) {
+            buttonsElement.innerHTML = "";
+            return;
+        };
+
+        buttonsElement.innerHTML = `
+        <button class="Task__done js-Task__done">
+        ${hideDoneTasks ? "Pokaż" : "Ukryj"} skończone zadania</button>
+        <button class="Task__done--remove js-Task__done--markAll"
+        ${tasks.every((task) => task.done) ? " disabled" : ""}>
+        Oznacz wszystkie jako ukończone</button>`;
+
+        
+    };
+
+    const bindButtonsEvents = () => {
 
     };
 
-    const bindButtonEvents = () => {
-
-    };
-
-    const render = () => {
+    const renderTasks = () => {
        let htmlString = "";
 
        for (const task of tasks) {
@@ -37,27 +72,14 @@
        }
 
        document.querySelector(".js-tasks").innerHTML = htmlString;
-
-       const removeButtons = document.querySelectorAll(".js-remove");
-
-       removeButtons.forEach((removeButton, index) => {
-         removeButton.addEventListener("click", () => {
-          tasks.splice(index, 1);
-          render();
-         });
-       })
-    
-
-    const toggleDoneButtons = document.querySelectorAll(".js-done");
-
-    toggleDoneButtons.forEach((toggleDoneButton, index) => {
-        toggleDoneButton.addEventListener("click", () => {
-            toggleTaskDone(index);
-            render();
-        })
-    })
-
 };
+
+const render = () => {
+        renderTasks();
+        renderButtons();
+        bindEvents();
+        bindButtonsEvents();
+}
 
     const addNewTask = (newTaskContent) => {
         tasks.push({
