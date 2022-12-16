@@ -1,12 +1,20 @@
 {
     const tasks = [];
-
+    let hideDoneTasks = false;
 
     const toggleTaskDone = (taskIndex) => {
         tasks[taskIndex].done = !tasks[taskIndex].done;
 
         render();
     }
+
+    const renderButtons = () => {
+
+    };
+
+    const bindButtonEvents = () => {
+
+    };
 
     const render = () => {
        let htmlString = "";

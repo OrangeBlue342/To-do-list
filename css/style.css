@@ -68,3 +68,30 @@ html {
     margin: 10px, 20px;
     margin-top: 2px;
 }
+
+.Task__done {
+    background-color: white;
+    color: teal;
+    border: none;
+    transition: 1s;
+}
+
+.Task__done:hover {
+    color: hsl(180, 100%, 35%);
+}
+
+.Task__done--remove {
+    background-color: white;
+    color: teal;
+    border: none;
+    transition: 1s;
+}
+
+.Task__done--remove:hover {
+    color: hsl(180, 100%, 35%);
+}
+
+.buttons {
+    margin-left: 550px;
+    font-size: small;
+}
