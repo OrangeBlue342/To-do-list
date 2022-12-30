@@ -1,5 +1,5 @@
 {
-    const tasks = [];
+    let tasks = [];
     let hideDoneTasks = false;
 
     const toggleTaskDone = (taskIndex) => {
@@ -48,12 +48,13 @@
         const Task__done = () => {
           tasks = tasks.map((task) => ({
             ...task, done: true
-        }));
+          }));
+          
         render();
         };
 
         const Task__doneRemove = () => {
-          Task__doneRemove = !Task__doneRemove;
+          Task__doneRemove = !removeButtons;
           render();
         };
     
