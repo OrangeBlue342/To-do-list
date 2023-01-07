@@ -99,3 +99,7 @@ html {
 .buttons:disabled {
     background-color: transparent;
 }
+
+.tasks_item--hidden {
+    display: none;
+}

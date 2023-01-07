@@ -3,7 +3,14 @@
     let hideDoneTasks = false;
 
     const toggleTaskDone = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done;
+      tasks = [
+        ...tasks.slice(0, taskIndex),
+        {
+          ...tasks[taskIndex],
+          done: !tasks[taskIndex].done,
+        },
+        ...tasks.slice(taskIndex + 1),
+      ];
 
         render();
     }
@@ -41,7 +48,7 @@
         <button class="Task__done js-Task__done">
         ${hideDoneTasks ? "Pokaż" : "Ukryj"} skończone zadania</button>
         <button class="Task__done--remove js-Task__done--markAll"
-        ${tasks.every((task) => task.done) ? " disabled" : ""}>
+        ${tasks.every(({done}) => done) ? " disabled" : ""}>
         Oznacz wszystkie jako ukończone</button>`;
       };
 
@@ -54,7 +61,7 @@
         };
 
         const Task__doneRemove = () => {
-          Task__doneRemove = !removeButtons;
+          Task__doneRemove = !Task__doneRemove;
           render();
         };
     
@@ -75,7 +82,6 @@
       Task__doneRemoveButton.addEventListener("click", Task__doneRemove)
     };
 
-  
 
     const renderTasks = () => {
        let htmlString = "";
@@ -83,7 +89,7 @@
        for (const task of tasks) {
         htmlString += `
         <li 
-        class="list_item">
+        class="list_item${Task__done && Task__doneRemove ? " tasks_item--hidden" : ""}">
         <button 
         class="button_done js-done">
         ${task.done ? "&#10004;" : ""}
