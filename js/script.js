@@ -91,7 +91,7 @@
        for (const task of tasks) {
         htmlString += `
         <li 
-        class="list_item${toggleAllTasksDone && toggleHideDoneTasks ? " tasks_item--hidden" : ""}">
+        class="list_item${Task__done && Task__doneRemove ? " tasks_item--hidden" : ""}">
         <button 
         class="button_done js-done">
         ${task.done ? "&#10004;" : ""}
