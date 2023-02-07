@@ -45,41 +45,43 @@
         };
 
         buttonsElement.innerHTML = `
-        <button class="Task__done js-Task__done">
+        <button class="Task__done js-toggleAllTasksDoneButton">
         ${hideDoneTasks ? "Pokaż" : "Ukryj"} skończone zadania</button>
-        <button class="Task__done--remove js-Task__done--markAll"
+        <button class="js-toggleHideDoneTasksButton"
         ${tasks.every(({done}) => done) ? " disabled" : ""}>
         Oznacz wszystkie jako ukończone</button>`;
       };
 
-        const Task__done = () => {
+        const toggleAllTasksDone = () => {
           tasks = tasks.map((task) => ({
-            ...task, done: true
+            ...task, 
+            done: true,
           }));
           
         render();
         };
 
-        const Task__doneRemove = () => {
-          Task__doneRemove = !Task__doneRemove;
+        const toggleHideDoneTasks = () => {
+          hideDoneTasks= !hideDoneTasks;
+
           render();
         };
     
 
     const bindButtonsEvents = () => {
 
-      const Task__doneButton = document.querySelector(".js-Task__done")
+      const toggleAllTasksDoneButtonElement = document.querySelector(".js-toggleAllTasksDoneButton")
 
-      if(Task__doneButton) {
-        Task__doneButton.addEventListener("click", Task__done)
+      if(toggleAllTasksDoneButtonElement) {
+        toggleAllTasksDoneButtonElement.addEventListener("click", toggleAllTasksDone);
       }
 
     };
 
-    const Task__doneRemoveButton = document.querySelector(".js-Task__done--markAll")
+    const toggleHideDoneTasksButtonElement = document.querySelector(".js-toggleHideDoneTasksButton")
 
-    if(Task__doneRemoveButton) {
-      Task__doneRemoveButton.addEventListener("click", Task__doneRemove)
+    if(toggleHideDoneTasksButtonElement) {
+      toggleHideDoneTasksButtonElement.addEventListener("click", toggleHideDoneTasks)
     };
 
 
@@ -89,7 +91,7 @@
        for (const task of tasks) {
         htmlString += `
         <li 
-        class="list_item${Task__done && Task__doneRemove ? " tasks_item--hidden" : ""}">
+        class="list_item${toggleAllTasksDone && toggleHideDoneTasks ? " tasks_item--hidden" : ""}">
         <button 
         class="button_done js-done">
         ${task.done ? "&#10004;" : ""}
