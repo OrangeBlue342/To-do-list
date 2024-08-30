@@ -69,14 +69,14 @@ html {
     margin-top: 2px;
 }
 
-.Task__done {
+.js-toggleHideDoneTasksButton {
     background-color: white;
     color: teal;
     border: none;
     transition: 1s;
 }
 
-.Task__done:hover {
+.js-toggleHideDoneTasksButton:hover {
     color: hsl(180, 100%, 35%);
 }
 
