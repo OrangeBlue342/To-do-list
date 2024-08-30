@@ -80,14 +80,14 @@ html {
     color: hsl(180, 100%, 35%);
 }
 
-.Task__done--remove {
+.js-toggleAllTasksDoneButton {
     background-color: white;
     color: teal;
     border: none;
     transition: 1s;
 }
 
-.Task__done--remove:hover {
+.js-toggleAllTasksDoneButton:hover {
     color: hsl(180, 100%, 35%);
 }
 
