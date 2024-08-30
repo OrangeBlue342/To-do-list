@@ -45,9 +45,9 @@
         };
 
         buttonsElement.innerHTML = `
-        <button class="Task__done js-toggleAllTasksDoneButton">
+        <button class="Task__done js-toggleHideDoneTasksButton">
         ${hideDoneTasks ? "Pokaż" : "Ukryj"} skończone zadania</button>
-        <button class="js-toggleHideDoneTasksButton"
+        <button class="js-toggleAllTasksDoneButton"
         ${tasks.every(({done}) => done) ? " disabled" : ""}>
         Oznacz wszystkie jako ukończone</button>`;
       };
